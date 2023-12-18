@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: [
           // Bagian Atas
           Container(
@@ -66,7 +66,6 @@ class DashboardScreen extends StatelessWidget {
                       child: IconButton(
                         icon: Icon(Icons.account_circle, size: 40.0),
                         onPressed: () {
-                          // Aksi yang ingin diambil ketika ikon akun diklik
                         },
                       ),
                     ),
@@ -123,7 +122,7 @@ class DashboardScreen extends StatelessWidget {
                         Expanded(
                           flex: 1,
                           child: Image.asset(
-                            'images/soup.png', // Ganti dengan path gambar Anda
+                            'images/soup.png', 
                             height: 80.0,
                             width: 80.0,
                             fit: BoxFit.fill,
@@ -143,7 +142,6 @@ class DashboardScreen extends StatelessWidget {
                             height: 40.0,
                             child: ElevatedButton(
                               onPressed: () {
-                                // Aksi yang ingin diambil ketika tombol diklik
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Color(0xFFF9EBD1),
@@ -165,7 +163,6 @@ class DashboardScreen extends StatelessWidget {
                             margin: EdgeInsets.only(left: 10.0),
                             child: ElevatedButton(
                               onPressed: () {
-                                // Aksi yang ingin diambil ketika tombol diklik
                               },
                               style: ElevatedButton.styleFrom(
                                 primary: Colors.white,
@@ -186,141 +183,191 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
           ),
-// Container Ketiga (Card Resep)
-// Container Ketiga (Card Resep)
-SizedBox(height: 20),
-Expanded(
-  child: Container(
-    padding: EdgeInsets.all(15.0),
-    color: Colors.grey[200],
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        // Row Pertama
-        Row(
-          children: [
-            // Kolom Pertama
-            Expanded(
-              flex: 5, // Menggunakan flex 5 dari total 6 (5/6)
-              child: Text(
-                "Popular recipes",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'Google Sans',
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            // Kolom Kedua
-            Expanded(
-              flex: 1, // Menggunakan flex 1 dari total 6 (1/6)
-              child: Text(
-                "See all",
-                style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'Google Sans',
-                  color: Colors.orange,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ],
-        ),
-        // Jarak antara Row 1 dan 2
-        SizedBox(height: 15),
-        // Row Kedua
-        FractionallySizedBox(
-          widthFactor: 3 / 5, // Menentukan lebar relatif (3/5)
-          child: Card(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-              side: BorderSide(color: Colors.grey, width: 1.0),
-            ),
-            margin: EdgeInsets.only(right: 15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Bagian Atas Card (Gambar)
-                Container(
-                  height: 80.0,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage('images/spaghetti_bolognese.jpg'), // Ganti dengan path gambar Anda
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0),
-                    ),
+          SizedBox(height: 20),
+          // Popular Recipes Section
+          buildPopularSection(
+            title: "Popular recipes",
+            buttonText: "See all",
+            itemCount: 2,
+          ),
+          SizedBox(height: 20),
+          // Popular Creators Section
+          buildPopularSection(
+            title: "Popular creator",
+            buttonText: "See all",
+            itemCount: 1,
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'Search',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add),
+            label: 'Add',
+          ),
+        ],
+        selectedItemColor: Colors.orange,
+      ),
+    );
+  }
+
+  Widget buildPopularSection({required String title, required String buttonText, required int itemCount}) {
+    return Container(
+      padding: EdgeInsets.all(15.0),
+      color: Colors.grey[200],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                flex: 5,
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'Google Sans',
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                // Bagian Bawah Card (Informasi)
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      // Judul Makanan
-                      Text(
-                        "Spaghetti Bolognese",
-                        style: TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      // Kategori Makanan
-                      Text(
-                        "Pasta",
-                        style: TextStyle(
-                          color: Colors.grey,
-                        ),
-                      ),
-                      // Waktu Memasak
-                      Row(
-                        children: [
-                          Icon(Icons.access_time),
-                          SizedBox(width: 5.0),
-                          Text("30-45 minutes"),
-                        ],
-                      ),
-                      // Tingkat Kesulitan
-                      Row(
-                        children: [
-                          Icon(Icons.star),
-                          SizedBox(width: 5.0),
-                          Text("Medium"),
-                        ],
-                      ),
-                      // Chef
-                      Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15.0),
-                            child: Image.asset(
-                              'images/chef.jpg',
-                              height: 30.0,
-                              width: 30.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          SizedBox(width: 5.0),
-                          Text("Miriam Belina"),
-                        ],
-                      ),
-                    ],
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  buttonText,
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontFamily: 'Google Sans',
+                    color: Colors.orange,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
+              ),
+            ],
+          ),
+          SizedBox(height: 15),
+          // Row Kedua
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(
+                itemCount,
+                (index) => buildCard(
+                  'images/spaghetti_bolognese.jpg',
+                  'Spaghetti Bolognese',
+                  'Pasta',
+                  '30-45 minutes',
+                  'Medium',
+                  'Miriam Belina',
+                ),
+              ),
             ),
           ),
-        ),
-      ],
-    ),
-  ),
-),
-
         ],
+      ),
+    );
+  }
+
+  Widget buildCard(
+    String imagePath,
+    String title,
+    String category,
+    String cookTime,
+    String difficulty,
+    String chefName,
+  ) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        color: Color(0xFFFFFFFF),
+        child: SizedBox(
+          width: 200.0,
+          height: 270.0,
+          child: Column(
+            children: [
+              // Bagian Atas
+              Container(
+                height: 120.0,
+                width: 250.0,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 130.0,
+                  child: Center(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                            fontSize: 17,
+                            fontFamily: 'Google Sans',
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          category,
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontFamily: 'Google Sans',
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.access_time),
+                            SizedBox(width: 5.0),
+                            Text(cookTime, style: TextStyle(fontFamily: 'Google Sans')),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Icon(Icons.star),
+                            SizedBox(width: 5.0),
+                            Text(difficulty, style: TextStyle(fontFamily: 'Google Sans')),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(15.0),
+                              child: Image.asset(
+                                'images/chef.jpg',
+                                height: 30.0,
+                                width: 30.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            SizedBox(width: 5.0),
+                            Text(chefName, style: TextStyle(fontFamily: 'Google Sans')),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
