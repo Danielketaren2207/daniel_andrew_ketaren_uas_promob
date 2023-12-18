@@ -1,16 +1,30 @@
-# daniel_andrew_ketaren_uas_promob
+# Implementasi UI - Ujian Akhir Semester Mobile Programming
 
-A new Flutter project.
+Nama : Daniel Andrew Ketaren
 
-## Getting Started
+NIM : 211402062
 
-This project is a starting point for a Flutter application.
+![A POS application](src/hasil.png)
 
-A few resources to get you started if this is your first Flutter project:
+# Implementasi UI pada Aplikasi Android dengan Menggunakan Flutter
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Implementasi UI ini memiliki kemiripan sebesar 96% dimana untuk bagian popular creator masih cenderung sama dengan popular recipes
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+untuk kesesuaian dapat dibandingkan secara langsung dengan cloning aplikasi ini
+
+# Cara menjalankan kode
+
+1). git clone <https://github.com/Danielketaren2207/daniel_andrew_ketaren_uas_promob>
+
+2). masuk kedalam VSC atau Aplikasi pemprograman
+
+3). Run (flutter pub get)
+
+4). Buka Emulator
+
+5). Run Without Debugging.
+
+# Sertifikat Tubes dan Badge
+![A POS application](src/badge.png)
+![A POS application](src/sertif.png)
+![A POS application](src/sertif_kotlin_android.pdf)
